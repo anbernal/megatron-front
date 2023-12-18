@@ -20,95 +20,50 @@ interface IUser {
   color: string;
 }
 
+interface MoedaCompra {
+  name: string;
+  quantidade: string;
+  dataCompra: string;
+  imagem: string;
+}
+
 @Component({
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+new: any;
   constructor(private chartsData: DashboardChartsData) {
   }
 
   icons = { cilList, cilShieldAlt,cibCircle,cibCircleci,cilXCircle,cilChartLine,cilAlignCenter};
 
-  public users: IUser[] = [
+  public moedasCompra: MoedaCompra[] = [
     {
-      name: 'Yiorgos Avraamu',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Us',
-      usage: 50,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Mastercard',
-      activity: '10 sec ago',
-      avatar: './assets/img/avatars/1.jpg',
-      status: 'success',
-      color: 'success'
+      name: 'sei-network',
+      quantidade: '20',
+      dataCompra: '08-10-2023 00:42:29',
+      imagem: 'https://assets.coingecko.com/coins/images/28205/large/Sei_Logo_-_Transparent.png?1696527207',
     },
     {
-      name: 'Avram Tarasios',
-      state: 'Recurring ',
-      registered: 'Jan 1, 2021',
-      country: 'Br',
-      usage: 10,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Visa',
-      activity: '5 minutes ago',
-      avatar: './assets/img/avatars/2.jpg',
-      status: 'danger',
-      color: 'info'
+      name: 'algorand',
+      quantidade: '4',
+      dataCompra: '08-10-2023 00:42:29',
+      imagem: 'https://assets.coingecko.com/coins/images/4380/large/download.png?1696504978',
     },
     {
-      name: 'Quintin Ed',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'In',
-      usage: 74,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Stripe',
-      activity: '1 hour ago',
-      avatar: './assets/img/avatars/3.jpg',
-      status: 'warning',
-      color: 'warning'
+      name: 'san-diego-coin',
+      quantidade: '700',
+      dataCompra: '08-10-2023 00:42:29',
+      imagem: 'https://assets.coingecko.com/coins/images/12316/large/j2FpS99.png?1599087149',
     },
     {
-      name: 'Enéas Kwadwo',
-      state: 'Sleep',
-      registered: 'Jan 1, 2021',
-      country: 'Fr',
-      usage: 98,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Paypal',
-      activity: 'Last month',
-      avatar: './assets/img/avatars/4.jpg',
-      status: 'secondary',
-      color: 'danger'
+      name: 'elrond-erd-2',
+      quantidade: '1000',
+      dataCompra: '08-10-2023 00:42:29',
+      imagem: 'https://assets.coingecko.com/coins/images/12335/large/egld-token-logo.png?1696512162',
     },
-    {
-      name: 'Agapetus Tadeáš',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Es',
-      usage: 22,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'ApplePay',
-      activity: 'Last week',
-      avatar: './assets/img/avatars/5.jpg',
-      status: 'success',
-      color: 'primary'
-    },
-    {
-      name: 'Friderik Dávid',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Pl',
-      usage: 1,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Amex',
-      activity: 'Yesterday',
-      avatar: './assets/img/avatars/6.jpg',
-      status: 'info',
-      color: 'dark'
-    }
+
   ];
   public mainChart: IChartProps = {};
   public chart: Array<IChartProps> = [];
@@ -128,5 +83,9 @@ export class DashboardComponent implements OnInit {
     this.trafficRadioGroup.setValue({ trafficRadio: value });
     this.chartsData.initMainChart(value);
     this.initCharts();
+  }
+
+  formatarData(data: string): string {
+    return new Date(data).toLocaleString('pt-BR');
   }
 }

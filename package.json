@@ -1,6 +1,6 @@
 {
   "name": "megatron-front",
-  "version": "1.00.001",
+  "version": "1.00.01",
   "license": "MIT",
   "config": {
     "coreui_library_short_version": "4.5",

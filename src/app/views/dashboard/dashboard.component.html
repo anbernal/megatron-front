@@ -386,24 +386,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let moeda of moedasCompra; index as i">
+            <tr *ngFor="let compra of listaCompra; index as i">
               <td class="text-center">
                 <c-avatar
                   size="md"
-                  src="{{ moeda.imagem }}"
+                  src="{{ compra.moeda.imageLarge }}"
                 ></c-avatar>
               </td>
               <td>
-                <div>{{ moeda.name.toUpperCase() }}</div>
+                <div>{{ compra.moeda.idCoinGecko() }}</div>
               </td>
               <td>
                 <div class="d-flex justify-content-between">
-                  <div>{{ moeda.quantidade }}</div>
+                  <div>{{ compra.qtd }}</div>
                 </div>
               </td>
               <td>
                 <div class="small text-medium-emphasis">Data compra</div>
-                <div class="fw-semibold text-nowrap">{{ formatarData(moeda.dataCompra)  }}</div>
+                <div class="fw-semibold text-nowrap">{{ formatarData(compra.dataCompra)  }}</div>
               </td>
             </tr>
           </tbody>

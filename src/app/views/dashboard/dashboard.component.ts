@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { CompraService } from "./service/compras.service";
+import { Compra } from "./model/compra";
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
 import { cilList, cilShieldAlt,
         cibCircle,cibCircleci,
         cilXCircle,cilChartLine,cilAlignCenter } from '@coreui/icons';
+import { Observable } from 'rxjs';
 
 interface IUser {
   name: string;
@@ -20,59 +23,30 @@ interface IUser {
   color: string;
 }
 
-interface MoedaCompra {
-  name: string;
-  quantidade: string;
-  dataCompra: string;
-  imagem: string;
-}
-
 @Component({
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 new: any;
-  constructor(private chartsData: DashboardChartsData) {
+  constructor(private chartsData: DashboardChartsData, private compraService: CompraService) {
   }
 
   icons = { cilList, cilShieldAlt,cibCircle,cibCircleci,cilXCircle,cilChartLine,cilAlignCenter};
 
-  public moedasCompra: MoedaCompra[] = [
-    {
-      name: 'sei-network',
-      quantidade: '20',
-      dataCompra: '08-10-2023 00:42:29',
-      imagem: 'https://assets.coingecko.com/coins/images/28205/large/Sei_Logo_-_Transparent.png?1696527207',
-    },
-    {
-      name: 'algorand',
-      quantidade: '4',
-      dataCompra: '08-10-2023 00:42:29',
-      imagem: 'https://assets.coingecko.com/coins/images/4380/large/download.png?1696504978',
-    },
-    {
-      name: 'san-diego-coin',
-      quantidade: '700',
-      dataCompra: '08-10-2023 00:42:29',
-      imagem: 'https://assets.coingecko.com/coins/images/12316/large/j2FpS99.png?1599087149',
-    },
-    {
-      name: 'elrond-erd-2',
-      quantidade: '1000',
-      dataCompra: '08-10-2023 00:42:29',
-      imagem: 'https://assets.coingecko.com/coins/images/12335/large/egld-token-logo.png?1696512162',
-    },
 
-  ];
+  
   public mainChart: IChartProps = {};
   public chart: Array<IChartProps> = [];
   public trafficRadioGroup = new UntypedFormGroup({
     trafficRadio: new UntypedFormControl('Month')
   });
+  public listaCompra: Array<Compra> = [];
 
   ngOnInit(): void {
     this.initCharts();
+    this.buscaCompra();
+    this.listaCompra.
   }
 
   initCharts(): void {
@@ -88,4 +62,14 @@ new: any;
   formatarData(data: string): string {
     return new Date(data).toLocaleString('pt-BR');
   }
+
+  private buscaCompra(){
+    this.compraService.buscaCompras().subscribe({
+      next:response =>{
+        console.log(" Resposta da API. ", response);
+      }
+    });
+
+  }
+
 }

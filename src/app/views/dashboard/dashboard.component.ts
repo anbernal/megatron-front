@@ -45,8 +45,7 @@ new: any;
 
   ngOnInit(): void {
     this.initCharts();
-    this.buscaCompra();
-    this.listaCompra.
+    this.buscaCompra();    
   }
 
   initCharts(): void {

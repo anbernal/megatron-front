@@ -1,11 +1,11 @@
 export class Moeda {
  
-  id: number; 
-  nomeMoeda: string; 
-  mfiAtual: number; 
-  idCoinGecko: string; 
-  nameCoinGecko: string; 
-  imageThumb: string; 
-  imageSmall: string; 
-  imageLarge: string;
+  id: number = 0; 
+  nomeMoeda: string = ""; 
+  mfiAtual: number = 0; 
+  idCoinGecko: string = ""; 
+  nameCoinGecko: string = ""; 
+  imageThumb: string = ""; 
+  imageSmall: string = ""; 
+  imageLarge: string = "";
 }

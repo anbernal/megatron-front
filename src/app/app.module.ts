@@ -3,6 +3,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import {CoreModule} from './core/core.module';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -33,7 +34,7 @@ import {
   SharedModule,
   SidebarModule,
   TabsModule,
-  UtilitiesModule
+  UtilitiesModule,
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -72,7 +73,8 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    CoreModule
   ],
   providers: [
     {

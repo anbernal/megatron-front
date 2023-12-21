@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { CompraService } from "./service/compras.service";
+import { ComprasService } from "../../core/service/compras.service";
 import { Compra } from "./model/compra";
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
@@ -28,14 +28,14 @@ interface IUser {
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-new: any;
-  constructor(private chartsData: DashboardChartsData, private compraService: CompraService) {
-  }
+
+  constructor(private chartsData: DashboardChartsData,
+              private compraService: ComprasService) {}
 
   icons = { cilList, cilShieldAlt,cibCircle,cibCircleci,cilXCircle,cilChartLine,cilAlignCenter};
 
 
-  
+
   public mainChart: IChartProps = {};
   public chart: Array<IChartProps> = [];
   public trafficRadioGroup = new UntypedFormGroup({
@@ -45,7 +45,7 @@ new: any;
 
   ngOnInit(): void {
     this.initCharts();
-    this.buscaCompra();    
+    this.buscaCompra();
   }
 
   initCharts(): void {

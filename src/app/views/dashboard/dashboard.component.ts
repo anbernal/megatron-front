@@ -34,8 +34,6 @@ export class DashboardComponent implements OnInit {
 
   icons = { cilList, cilShieldAlt,cibCircle,cibCircleci,cilXCircle,cilChartLine,cilAlignCenter};
 
-
-
   public mainChart: IChartProps = {};
   public chart: Array<IChartProps> = [];
   public trafficRadioGroup = new UntypedFormGroup({
@@ -65,7 +63,7 @@ export class DashboardComponent implements OnInit {
   private buscaCompra(){
     this.compraService.buscaCompras().subscribe({
       next:response =>{
-        console.log(" Resposta da API. ", response);
+        this.listaCompra = response;
       }
     });
 
